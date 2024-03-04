@@ -17,13 +17,13 @@ public class BookControllers {
         return bookRepos.findAll();
     }
 
-    @PostMapping("/save")
+    @PostMapping("/saveBook")
     public String saveBook(@RequestBody Book book) {
         bookRepos.save(book);
         return "saved book";
     }
 
-    @PutMapping(value = "update/{id}")
+    @PutMapping(value = "updateBook/{id}")
     public String updateBook(@PathVariable long id, @RequestBody Book book) {
         Book updateBook = bookRepos.findById(id).get();
         updateBook.setName(book.getName());
@@ -38,7 +38,7 @@ public class BookControllers {
 
         Book deleteBook = bookRepos.findById(id).get();
         bookRepos.delete(deleteBook);
-        return "delete book" + id;
+        return "delete book :" + id;
 
     }
 
